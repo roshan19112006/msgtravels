@@ -265,6 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 7. Interactive Vehicle Selector (vehicles.html)
   const vehicleCards = document.querySelectorAll('.vehicle-select-card');
+  const vehicleTabs = document.querySelectorAll('.v-tab-btn');
   const vehiclePanels = document.querySelectorAll('.vehicle-detail-panel');
 
   const activateVehicle = (targetId, shouldScroll = false) => {
@@ -278,6 +279,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let foundPanel = null;
 
+    // Synchronize Top Quick Switcher Tabs
+    vehicleTabs.forEach(t => {
+      const tabTarget = t.getAttribute('data-vehicle-target');
+      const isTarget = tabTarget === cleanId || tabTarget === targetId;
+      t.classList.toggle('active', isTarget);
+      t.setAttribute('aria-selected', isTarget ? 'true' : 'false');
+      if (isTarget) {
+        // Ensure active tab is visible in horizontal scroll container
+        t.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+    });
+
+    // Synchronize Lower Fleet Overview Cards
     vehicleCards.forEach(c => {
       const cardTarget = c.getAttribute('data-vehicle-target');
       const isTarget = cardTarget === cleanId || cardTarget === targetId;
@@ -285,6 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
       c.setAttribute('aria-selected', isTarget ? 'true' : 'false');
     });
 
+    // Show/Hide Detail Panels
     vehiclePanels.forEach(panel => {
       if (panel.id === cleanId || panel.id === targetId) {
         panel.classList.add('active');
@@ -309,6 +324,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  // Click handler on Quick Tabs
+  vehicleTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const targetId = tab.getAttribute('data-vehicle-target');
+      activateVehicle(targetId, false);
+    });
+  });
+
+  // Click handler on Lower Fleet Cards (scrolls up to spotlight)
   vehicleCards.forEach(card => {
     card.addEventListener('click', () => {
       const targetId = card.getAttribute('data-vehicle-target');
