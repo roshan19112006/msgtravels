@@ -161,4 +161,96 @@ document.addEventListener('DOMContentLoaded', () => {
       link.classList.add('active');
     }
   });
+
+  // 7. Interactive Vehicle Selector & Spotlight Tabs (vehicles.html)
+  const vehicleCards = document.querySelectorAll('.vehicle-select-card');
+  const vehiclePanels = document.querySelectorAll('.vehicle-detail-panel');
+  const vehicleDropdown = document.getElementById('vehicleChoice');
+
+  vehicleCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const targetId = card.getAttribute('data-vehicle-target');
+      if (!targetId) return;
+
+      // Update Tab Selection States
+      vehicleCards.forEach(c => {
+        c.classList.remove('active');
+        c.setAttribute('aria-selected', 'false');
+      });
+      card.classList.add('active');
+      card.setAttribute('aria-selected', 'true');
+
+      // Show only target vehicle detail panel
+      vehiclePanels.forEach(panel => {
+        if (panel.id === targetId) {
+          panel.classList.add('active');
+          panel.style.display = 'block';
+        } else {
+          panel.classList.remove('active');
+          panel.style.display = 'none';
+        }
+      });
+
+      // Auto-sync booking dropdown if present
+      if (vehicleDropdown) {
+        if (targetId === 'vehicle-innova') {
+          vehicleDropdown.value = 'Toyota Innova Crysta (6+1 / 7+1)';
+        } else if (targetId === 'vehicle-dzire') {
+          vehicleDropdown.value = 'Maruti Suzuki Dzire (4+1)';
+        }
+      }
+    });
+  });
+
+  // 8. Vehicle Image Lightbox Modal
+  const lightboxModal = document.getElementById('vehicleLightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxCaption = document.getElementById('lightboxCaption');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxOverlay = document.getElementById('lightboxOverlay');
+  const lightboxTriggers = document.querySelectorAll('[data-lightbox]');
+
+  const openLightbox = (src, caption) => {
+    if (!lightboxModal || !lightboxImg) return;
+    lightboxImg.src = src;
+    if (lightboxCaption) {
+      lightboxCaption.textContent = caption || 'MSG Travels Fleet';
+    }
+    lightboxModal.classList.add('open');
+    lightboxModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLightbox = () => {
+    if (!lightboxModal) return;
+    lightboxModal.classList.remove('open');
+    lightboxModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+
+  lightboxTriggers.forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const imgSrc = trigger.getAttribute('data-lightbox') || trigger.querySelector('img')?.src;
+      const caption = trigger.getAttribute('data-caption') || trigger.querySelector('img')?.alt || '';
+      if (imgSrc) {
+        openLightbox(imgSrc, caption);
+      }
+    });
+  });
+
+  if (lightboxClose) {
+    lightboxClose.addEventListener('click', closeLightbox);
+  }
+  if (lightboxOverlay) {
+    lightboxOverlay.addEventListener('click', closeLightbox);
+  }
+
+  // Keyboard accessibility (ESC to close lightbox)
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightboxModal && lightboxModal.classList.contains('open')) {
+      closeLightbox();
+    }
+  });
 });
+
