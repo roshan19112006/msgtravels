@@ -183,7 +183,29 @@
 
         <!-- Vehicle Image Selector Tabs (Click Vehicle to View) -->
         <div class="vehicle-selector-grid" role="tablist" aria-label="Vehicle Fleet Selector">
-          <!-- 5 Seater: Maruti Suzuki Dzire -->
+          <!-- 1. WagonR (5 Seater Budget) -->
+          <button type="button" class="vehicle-select-card" data-vehicle-target="vehicle-wagonr" role="tab" aria-selected="false" aria-controls="vehicle-wagonr" id="tab-wagonr">
+            <div class="vehicle-select-img-wrap">
+              <img src="images/wagonr.jpg" alt="Maruti Suzuki WagonR AC Cab Salem to Yercaud">
+              <span class="vehicle-click-hint">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                Click to View
+              </span>
+              <span class="vehicle-badge-tag">5 SEATER BUDGET</span>
+            </div>
+            <div class="vehicle-select-info">
+              <div class="vehicle-select-title-row">
+                <h4>Maruti WagonR</h4>
+                <span class="vehicle-select-seat">4+1 Seater</span>
+              </div>
+              <span class="vehicle-select-reg">Tallboy AC Cab</span>
+              <div class="vehicle-active-indicator">
+                <span class="indicator-dot"></span> Currently Viewing Details
+              </div>
+            </div>
+          </button>
+
+          <!-- 2. Dzire (5 Seater Sedan) -->
           <button type="button" class="vehicle-select-card" data-vehicle-target="vehicle-dzire" role="tab" aria-selected="false" aria-controls="vehicle-dzire" id="tab-dzire">
             <div class="vehicle-select-img-wrap">
               <img src="images/fleet_dzire.jpg" alt="Maruti Suzuki Dzire AC Sedan Cab Salem to Yercaud TN29BS6246">
@@ -205,7 +227,29 @@
             </div>
           </button>
 
-          <!-- 7 Seater: Innova Crysta -->
+          <!-- 3. Ertiga (7 Seater MUV) -->
+          <button type="button" class="vehicle-select-card" data-vehicle-target="vehicle-ertiga" role="tab" aria-selected="false" aria-controls="vehicle-ertiga" id="tab-ertiga">
+            <div class="vehicle-select-img-wrap">
+              <img src="images/ertiga.jpg" alt="Maruti Suzuki Ertiga 7 Seater MUV Cab Salem to Yercaud">
+              <span class="vehicle-click-hint">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                Click to View
+              </span>
+              <span class="vehicle-badge-tag">7 SEATER MUV</span>
+            </div>
+            <div class="vehicle-select-info">
+              <div class="vehicle-select-title-row">
+                <h4>Maruti Ertiga</h4>
+                <span class="vehicle-select-seat">6+1 Seater</span>
+              </div>
+              <span class="vehicle-select-reg">Comfort Family MUV</span>
+              <div class="vehicle-active-indicator">
+                <span class="indicator-dot"></span> Currently Viewing Details
+              </div>
+            </div>
+          </button>
+
+          <!-- 4. Innova Crysta (7 Seater Luxury) -->
           <button type="button" class="vehicle-select-card active" data-vehicle-target="vehicle-innova" role="tab" aria-selected="true" aria-controls="vehicle-innova" id="tab-innova">
             <div class="vehicle-select-img-wrap">
               <img src="images/fleet_innova.jpg" alt="Toyota Innova Crysta Cab Salem to Yercaud TN09CL5713">
@@ -213,7 +257,7 @@
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                 Click to View
               </span>
-              <span class="vehicle-badge-tag">7 SEATER MUV</span>
+              <span class="vehicle-badge-tag">7 SEATER LUXURY</span>
             </div>
             <div class="vehicle-select-info">
               <div class="vehicle-select-title-row">
@@ -227,7 +271,7 @@
             </div>
           </button>
 
-          <!-- Tempo Traveller -->
+          <!-- 5. Tempo Traveller -->
           <button type="button" class="vehicle-select-card" data-vehicle-target="vehicle-tempo" role="tab" aria-selected="false" aria-controls="vehicle-tempo" id="tab-tempo">
             <div class="vehicle-select-img-wrap">
               <img src="images/tempo_traveller.jpg" alt="Tempo Traveller 12-18 Seater AC Van Salem to Yercaud">
@@ -249,7 +293,7 @@
             </div>
           </button>
 
-          <!-- Tourist Bus -->
+          <!-- 6. Tourist Bus -->
           <button type="button" class="vehicle-select-card" data-vehicle-target="vehicle-bus" role="tab" aria-selected="false" aria-controls="vehicle-bus" id="tab-bus">
             <div class="vehicle-select-img-wrap">
               <img src="images/tourist_bus.jpg" alt="Luxury Tourist Bus Coach Salem to Yercaud">
@@ -274,8 +318,61 @@
 
         <!-- Selected Vehicle Spotlight (Visible only for clicked vehicle) -->
         <div class="vehicle-details-container">
+
+          <!-- Detailed View: WagonR -->
+          <article class="vehicle-detail-panel" id="vehicle-wagonr" role="tabpanel" aria-labelledby="tab-wagonr" style="display: none;">
+            <div class="vehicle-spotlight-card">
+              <div class="vehicle-spotlight-media">
+                <div class="vehicle-main-img-box" data-lightbox="images/wagonr.jpg" data-caption="Maruti Suzuki WagonR (4+1 Budget AC Cab - 5 Seater) — Salem to Yercaud">
+                  <img src="images/wagonr.jpg" alt="Maruti Suzuki WagonR AC Cab Salem to Yercaud" class="zoomable-img">
+                  <div class="img-overlay-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                    <span>Click Photo to Enlarge</span>
+                  </div>
+                  <span class="vehicle-type-pill">5 SEATER (4+1 BUDGET AC)</span>
+                  <span class="vehicle-reg-pill">Tallboy AC Cab</span>
+                </div>
+              </div>
+
+              <div class="vehicle-spotlight-content">
+                <div>
+                  <div class="vehicle-title-bar">
+                    <div>
+                      <span class="section-tag" style="margin-bottom: 6px; font-size: 0.72rem; padding: 2px 10px;">Budget Friendly & Easy Ingress</span>
+                      <h3 class="vehicle-name">5 Seater — Maruti Suzuki WagonR</h3>
+                      <p class="vehicle-subtext">Commercial Permit • High Headroom • Chilled AC</p>
+                    </div>
+                    <span class="vehicle-cap-badge">4+1 Seater</span>
+                  </div>
+
+                  <p class="vehicle-desc">
+                    Best value for money. Tallboy design provides easy boarding for senior citizens, great headroom, large windows for sightseeing, and reliable hill agility across Yercaud bends for small families and couples.
+                  </p>
+
+                  <div class="vehicle-specs-grid">
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>AC:</strong> Fast Cooling Air Conditioning</div>
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Seating:</strong> High-Seating Tallboy Ergonomics</div>
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Luggage:</strong> 2 Medium Bags Boot + Roof Carrier</div>
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Seniors:</strong> Easy Upright Step-In Seating</div>
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Fare:</strong> Most Economical Salem-Yercaud Rate</div>
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Sanitization:</strong> 100% Sanitized & Vacuumed</div>
+                  </div>
+                </div>
+
+                <div class="vehicle-action-row">
+                  <a href="https://wa.me/919942928239?text=Hello%20MSG%20Travels,%20I%20want%20to%20inquire%20and%20book%20the%205%20Seater%20Maruti%20Suzuki%20WagonR%20(4+1)%20for%20Salem%20to%20Yercaud." class="btn btn-whatsapp btn-action-large" target="_blank" rel="noopener noreferrer">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2Z"/></svg>
+                    Book WagonR on WhatsApp
+                  </a>
+                  <a href="tel:+919942928239" class="btn btn-call btn-action-call">
+                    📞 Call 9942928239
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
           
-          <!-- Detailed View 1: 5 Seater Dzire -->
+          <!-- Detailed View: 5 Seater Dzire -->
           <article class="vehicle-detail-panel" id="vehicle-dzire" role="tabpanel" aria-labelledby="tab-dzire" style="display: none;">
             <div class="vehicle-spotlight-card">
               <div class="vehicle-spotlight-media">
@@ -318,7 +415,7 @@
                 <div class="vehicle-action-row">
                   <a href="https://wa.me/919942928239?text=Hello%20MSG%20Travels,%20I%20want%20to%20inquire%20and%20book%20the%205%20Seater%20Maruti%20Suzuki%20Dzire%20(4+1)%20for%20Salem%20to%20Yercaud." class="btn btn-whatsapp btn-action-large" target="_blank" rel="noopener noreferrer">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2Z"/></svg>
-                    Book 5 Seater (Dzire) on WhatsApp
+                    Book Dzire on WhatsApp
                   </a>
                   <a href="tel:+919942928239" class="btn btn-call btn-action-call">
                     📞 Call 9942928239
@@ -328,7 +425,60 @@
             </div>
           </article>
 
-          <!-- Detailed View 2: 7 Seater Innova Crysta -->
+          <!-- Detailed View: Ertiga (7 Seater MUV) -->
+          <article class="vehicle-detail-panel" id="vehicle-ertiga" role="tabpanel" aria-labelledby="tab-ertiga" style="display: none;">
+            <div class="vehicle-spotlight-card">
+              <div class="vehicle-spotlight-media">
+                <div class="vehicle-main-img-box" data-lightbox="images/ertiga.jpg" data-caption="Maruti Suzuki Ertiga (6+1 Seater Family MUV) — Salem to Yercaud">
+                  <img src="images/ertiga.jpg" alt="Maruti Suzuki Ertiga 7 Seater MUV Cab Salem to Yercaud" class="zoomable-img">
+                  <div class="img-overlay-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                    <span>Click Photo to Enlarge</span>
+                  </div>
+                  <span class="vehicle-type-pill">7 SEATER (6+1 FAMILY MUV)</span>
+                  <span class="vehicle-reg-pill">Family MPV</span>
+                </div>
+              </div>
+
+              <div class="vehicle-spotlight-content">
+                <div>
+                  <div class="vehicle-title-bar">
+                    <div>
+                      <span class="section-tag" style="margin-bottom: 6px; font-size: 0.72rem; padding: 2px 10px;">Comfortable Family MUV</span>
+                      <h3 class="vehicle-name">7 Seater — Maruti Suzuki Ertiga</h3>
+                      <p class="vehicle-subtext">Commercial Permit • Dual AC • Flexible Seating</p>
+                    </div>
+                    <span class="vehicle-cap-badge">6+1 Seater</span>
+                  </div>
+
+                  <p class="vehicle-desc">
+                    The smart choice for family vacations of 5-6 members. Great fuel efficiency, smooth suspension, 2nd row AC vents, and versatile folding rear seats for extra luggage boot capacity.
+                  </p>
+
+                  <div class="vehicle-specs-grid">
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>AC:</strong> 2nd Row Roof Air Conditioning</div>
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Seating:</strong> 6+1 Flexible Plush Seats</div>
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Luggage:</strong> 3-4 Medium Bags Boot Space</div>
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Ride:</strong> Low Rolling Motion on Hairpins</div>
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Economy:</strong> Cost-Effective 7 Seater Option</div>
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Sanitization:</strong> 100% Sanitized & Disinfected</div>
+                  </div>
+                </div>
+
+                <div class="vehicle-action-row">
+                  <a href="https://wa.me/919942928239?text=Hello%20MSG%20Travels,%20I%20want%20to%20inquire%20and%20book%20the%207%20Seater%20Maruti%20Suzuki%20Ertiga%20(6+1)%20for%20Salem%20to%20Yercaud." class="btn btn-whatsapp btn-action-large" target="_blank" rel="noopener noreferrer">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2Z"/></svg>
+                    Book Ertiga on WhatsApp
+                  </a>
+                  <a href="tel:+919942928239" class="btn btn-call btn-action-call">
+                    📞 Call 9942928239
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Detailed View: 7 Seater Innova Crysta -->
           <article class="vehicle-detail-panel active" id="vehicle-innova" role="tabpanel" aria-labelledby="tab-innova">
             <div class="vehicle-spotlight-card">
               <div class="vehicle-spotlight-media">
@@ -371,7 +521,7 @@
                 <div class="vehicle-action-row">
                   <a href="https://wa.me/919942928239?text=Hello%20MSG%20Travels,%20I%20want%20to%20inquire%20and%20book%20the%207%20Seater%20Toyota%20Innova%20Crysta%20(6+1)%20for%20Salem%20to%20Yercaud." class="btn btn-whatsapp btn-action-large" target="_blank" rel="noopener noreferrer">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2Z"/></svg>
-                    Book 7 Seater (Innova) on WhatsApp
+                    Book Innova Crysta on WhatsApp
                   </a>
                   <a href="tel:+919942928239" class="btn btn-call btn-action-call">
                     📞 Call 9942928239
@@ -381,7 +531,7 @@
             </div>
           </article>
 
-          <!-- Detailed View 3: Tempo Traveller (12-18 Seater) -->
+          <!-- Detailed View: Tempo Traveller (12-18 Seater) -->
           <article class="vehicle-detail-panel" id="vehicle-tempo" role="tabpanel" aria-labelledby="tab-tempo" style="display: none;">
             <div class="vehicle-spotlight-card">
               <div class="vehicle-spotlight-media">
@@ -434,7 +584,7 @@
             </div>
           </article>
 
-          <!-- Detailed View 4: Tourist Bus (21-35+ Seater) -->
+          <!-- Detailed View: Tourist Bus (21-35+ Seater) -->
           <article class="vehicle-detail-panel" id="vehicle-bus" role="tabpanel" aria-labelledby="tab-bus" style="display: none;">
             <div class="vehicle-spotlight-card">
               <div class="vehicle-spotlight-media">
@@ -572,8 +722,10 @@
                 <div class="form-group">
                   <label for="vehicleChoice">Select Vehicle *</label>
                   <select id="vehicleChoice" class="form-control" required>
-                    <option value="5 Seater — Maruti Suzuki Dzire (4+1 AC Sedan)">5 Seater — Maruti Suzuki Dzire (4+1 AC Sedan)</option>
-                    <option value="7 Seater — Toyota Innova Crysta (6+1 / 7+1 MUV)" selected>7 Seater — Toyota Innova Crysta (6+1 / 7+1 MUV)</option>
+                    <option value="5 Seater Budget — Maruti Suzuki WagonR (4+1 AC)">5 Seater Budget — Maruti Suzuki WagonR (4+1 AC)</option>
+                    <option value="5 Seater Sedan — Maruti Suzuki Dzire (4+1 AC Sedan)">5 Seater Sedan — Maruti Suzuki Dzire (4+1 AC Sedan)</option>
+                    <option value="7 Seater MUV — Maruti Suzuki Ertiga (6+1 AC)">7 Seater MUV — Maruti Suzuki Ertiga (6+1 AC)</option>
+                    <option value="7 Seater Luxury — Toyota Innova Crysta (6+1 / 7+1)" selected>7 Seater Luxury — Toyota Innova Crysta (6+1 / 7+1)</option>
                     <option value="Tempo Traveller (12 - 18 Seater Luxury AC Van)">Tempo Traveller (12 - 18 Seater Luxury AC Van)</option>
                     <option value="Tourist Bus / Mini Bus (21 - 35+ Seater Coach)">Tourist Bus / Mini Bus (21 - 35+ Seater Coach)</option>
                     <option value="Help Me Choose (Based on Group Size)">Help Me Choose (Based on Group Size)</option>

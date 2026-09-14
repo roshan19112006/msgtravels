@@ -190,10 +190,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Auto-sync booking dropdown if present
     if (vehicleDropdown) {
-      if (targetId === 'vehicle-dzire') {
-        vehicleDropdown.value = '5 Seater — Maruti Suzuki Dzire (4+1 AC Sedan)';
+      if (targetId === 'vehicle-wagonr') {
+        vehicleDropdown.value = '5 Seater Budget — Maruti Suzuki WagonR (4+1 AC)';
+      } else if (targetId === 'vehicle-dzire') {
+        vehicleDropdown.value = '5 Seater Sedan — Maruti Suzuki Dzire (4+1 AC Sedan)';
+      } else if (targetId === 'vehicle-ertiga') {
+        vehicleDropdown.value = '7 Seater MUV — Maruti Suzuki Ertiga (6+1 AC)';
       } else if (targetId === 'vehicle-innova') {
-        vehicleDropdown.value = '7 Seater — Toyota Innova Crysta (6+1 / 7+1 MUV)';
+        vehicleDropdown.value = '7 Seater Luxury — Toyota Innova Crysta (6+1 / 7+1)';
       } else if (targetId === 'vehicle-tempo') {
         vehicleDropdown.value = 'Tempo Traveller (12 - 18 Seater Luxury AC Van)';
       } else if (targetId === 'vehicle-bus') {
