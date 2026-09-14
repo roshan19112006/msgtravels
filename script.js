@@ -1,14 +1,15 @@
 /**
  * MSG Travels — Luxury Travel Website Scripts
- * Dynamic interactions, WhatsApp integration, Mobile UX, and UI Polish
+ * Dynamic 3-Slide Hero, Floating Booking Engine, WhatsApp Generator, and UI Interactions
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Sticky Header & Scroll Effects
-  const header = document.querySelector('.site-header');
+  const header = document.querySelector('.site-header, .site-header-floating');
   const scrollThreshold = 40;
 
   const handleScroll = () => {
+    if (!header) return;
     if (window.scrollY > scrollThreshold) {
       header.classList.add('scrolled');
     } else {
@@ -40,75 +41,161 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
   };
 
-  if (mobileToggle) {
-    mobileToggle.addEventListener('click', openDrawer);
-  }
-  if (drawerCloseBtn) {
-    drawerCloseBtn.addEventListener('click', closeDrawer);
-  }
-  if (drawerBackdrop) {
-    drawerBackdrop.addEventListener('click', closeDrawer);
-  }
+  if (mobileToggle) mobileToggle.addEventListener('click', openDrawer);
+  if (drawerCloseBtn) drawerCloseBtn.addEventListener('click', closeDrawer);
+  if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeDrawer);
 
   drawerLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      closeDrawer();
+    link.addEventListener('click', closeDrawer);
+  });
+
+  // 3. Automated 3-Slide Hero Slider with Progress Timer
+  const heroBgs = document.querySelectorAll('.hero-slide-bg');
+  const heroContents = document.querySelectorAll('.hero-slide-content');
+  const sliderBars = document.querySelectorAll('.slider-bar-btn');
+  const sliderCounter = document.querySelector('.slider-counter');
+
+  let currentSlide = 0;
+  const totalSlides = heroBgs.length || 3;
+  let slideInterval = null;
+  const slideDuration = 5000; // 5 seconds per slide
+
+  const showSlide = (index) => {
+    currentSlide = (index + totalSlides) % totalSlides;
+
+    // Update backgrounds
+    heroBgs.forEach((bg, i) => {
+      bg.classList.toggle('active', i === currentSlide);
+    });
+
+    // Update content blocks
+    heroContents.forEach((content, i) => {
+      content.classList.toggle('active', i === currentSlide);
+    });
+
+    // Update progress bars
+    sliderBars.forEach((bar, i) => {
+      bar.classList.toggle('active', i === currentSlide);
+      const fill = bar.querySelector('.slider-bar-fill');
+      if (fill) {
+        fill.style.animation = 'none';
+        bar.offsetHeight; // trigger reflow
+        if (i === currentSlide) {
+          fill.style.animation = `slideTimerFill ${slideDuration}ms linear forwards`;
+        }
+      }
+    });
+
+    // Update counter
+    if (sliderCounter) {
+      sliderCounter.textContent = `0${currentSlide + 1} / 0${totalSlides}`;
+    }
+  };
+
+  const nextSlide = () => {
+    showSlide(currentSlide + 1);
+  };
+
+  const startSlideTimer = () => {
+    stopSlideTimer();
+    if (totalSlides > 1) {
+      slideInterval = setInterval(nextSlide, slideDuration);
+    }
+  };
+
+  const stopSlideTimer = () => {
+    if (slideInterval) {
+      clearInterval(slideInterval);
+      slideInterval = null;
+    }
+  };
+
+  // Click on progress bar to jump to slide
+  sliderBars.forEach((bar, idx) => {
+    bar.addEventListener('click', () => {
+      showSlide(idx);
+      startSlideTimer();
     });
   });
 
-  // 3. WhatsApp Booking Form Logic
-  const bookingForm = document.getElementById('bookingForm');
-  const bookingPhone = '919942928239';
+  if (heroBgs.length > 0) {
+    showSlide(0);
+    startSlideTimer();
+  }
 
-  if (bookingForm) {
-    bookingForm.addEventListener('submit', (e) => {
+  // 4. Overlapping Modern Booking Card Logic
+  const bookTabs = document.querySelectorAll('.booking-tab-btn');
+  const cabItems = document.querySelectorAll('.cab-picker-item');
+  const bookForm = document.getElementById('modernBookForm');
+  let selectedCab = 'SEDAN (Dzire)';
+  let selectedTab = 'Outstation';
+
+  bookTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      bookTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      selectedTab = tab.getAttribute('data-tab') || tab.textContent.trim();
+
+      const fromInput = document.getElementById('bookFrom');
+      const toInput = document.getElementById('bookTo');
+
+      if (selectedTab.toLowerCase().includes('yercaud')) {
+        if (fromInput) fromInput.value = 'Salem City / Railway Station';
+        if (toInput) toInput.value = 'Yercaud Hill Station (Sightseeing)';
+      } else if (selectedTab.toLowerCase().includes('airport')) {
+        if (fromInput) fromInput.value = 'Salem';
+        if (toInput) toInput.value = 'Coimbatore / Bangalore Airport';
+      }
+    });
+  });
+
+  cabItems.forEach(cab => {
+    cab.addEventListener('click', () => {
+      cabItems.forEach(c => c.classList.remove('active'));
+      cab.classList.add('active');
+      selectedCab = cab.getAttribute('data-cab') || cab.querySelector('.cab-name-badge')?.textContent.trim() || 'Cab';
+    });
+  });
+
+  if (bookForm) {
+    bookForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      const name = document.getElementById('bookName')?.value.trim() || 'Guest';
+      const phone = document.getElementById('bookPhone')?.value.trim() || 'Not specified';
+      const fromLoc = document.getElementById('bookFrom')?.value.trim() || 'Salem';
+      const toLoc = document.getElementById('bookTo')?.value.trim() || 'Yercaud';
+      const date = document.getElementById('bookDate')?.value || 'Today / Flexible';
+      const time = document.getElementById('bookTime')?.value || 'Flexible';
+      const tripType = document.querySelector('input[name="tripType"]:checked')?.value || 'One Way';
 
-      const name = document.getElementById('custName')?.value.trim() || 'Guest';
-      const date = document.getElementById('travelDate')?.value || 'Flexible';
-      const vehicle = document.getElementById('vehicleChoice')?.value || 'Maruti Suzuki Dzire (4+1)';
-      const passengers = document.getElementById('passengerCount')?.value || '1-4';
-      const pickup = document.getElementById('pickupLocation')?.value.trim() || 'Salem';
-      const message = document.getElementById('custMessage')?.value.trim();
+      let text = `*New Trip Booking Request — MSG Travels*
+`;
+      text += `━━━━━━━━━━━━━━━━━━━━━
+`;
+      text += `🚖 *Service Type:* ${selectedTab} (${tripType})
+`;
+      text += `🚘 *Selected Cab:* ${selectedCab}
+`;
+      text += `👤 *Customer Name:* ${name}
+`;
+      text += `📞 *Phone Number:* ${phone}
+`;
+      text += `🟢 *From:* ${fromLoc}
+`;
+      text += `🔴 *To:* ${toLoc}
+`;
+      text += `📅 *Date:* ${date}  ⏰ *Time:* ${time}
+`;
+      text += `━━━━━━━━━━━━━━━━━━━━━
+`;
+      text += `_Please confirm vehicle availability and send the best transparent fare estimate._`;
 
-      // Format date for friendly view if valid
-      let formattedDate = date;
-      if (date && date !== 'Flexible') {
-        try {
-          const d = new Date(date);
-          formattedDate = d.toLocaleDateString('en-IN', {
-            weekday: 'short',
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric'
-          });
-        } catch (err) {
-          formattedDate = date;
-        }
-      }
-
-      let text = `*New Salem ➔ Yercaud Trip Booking Request*\n`;
-      text += `━━━━━━━━━━━━━━━━━━━━━\n`;
-      text += `👤 *Name:* ${name}\n`;
-      text += `📅 *Travel Date:* ${formattedDate}\n`;
-      text += `🚘 *Vehicle Preference:* ${vehicle}\n`;
-      text += `👥 *Passengers:* ${passengers} Persons\n`;
-      text += `📍 *Pickup Location:* ${pickup}\n`;
-      if (message) {
-        text += `💬 *Notes / Requests:* ${message}\n`;
-      }
-      text += `━━━━━━━━━━━━━━━━━━━━━\n`;
-      text += `_Please share the trip availability and package fare details._`;
-
-      const encodedText = encodeURIComponent(text);
-      const whatsappUrl = `https://api.whatsapp.com/send?phone=${bookingPhone}&text=${encodedText}`;
-
-      // Open in new tab or direct app
+      const whatsappUrl = `https://api.whatsapp.com/send?phone=919942928239&text=${encodeURIComponent(text)}`;
       window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
     });
   }
 
-  // 4. Sightseeing Interactive Filter
+  // 5. Sightseeing Interactive Filter
   const filterBtns = document.querySelectorAll('.filter-btn');
   const sightCards = document.querySelectorAll('.sightseeing-card');
 
@@ -116,7 +203,6 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-
       const filter = btn.getAttribute('data-filter');
 
       sightCards.forEach(card => {
@@ -135,23 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 5. FAQ Accordion Logic
-  const faqItems = document.querySelectorAll('.faq-item');
-
-  faqItems.forEach(item => {
-    const question = item.querySelector('.faq-question');
-    if (question) {
-      question.addEventListener('click', () => {
-        const isActive = item.classList.contains('active');
-        faqItems.forEach(other => other.classList.remove('active'));
-        if (!isActive) {
-          item.classList.add('active');
-        }
-      });
-    }
-  });
-
-  // 6. Navigation Active State Spy
+  // 6. Navigation Active Spy
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   const navLinks = document.querySelectorAll('.nav-link, .drawer-link');
 
@@ -162,22 +232,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 7. Interactive Vehicle Selector & Spotlight Tabs (vehicles.html)
+  // 7. Interactive Vehicle Selector (vehicles.html)
   const vehicleCards = document.querySelectorAll('.vehicle-select-card');
   const vehiclePanels = document.querySelectorAll('.vehicle-detail-panel');
-  const vehicleDropdown = document.getElementById('vehicleChoice');
 
   const activateVehicle = (targetId) => {
     if (!targetId) return;
 
-    // Update Tab Selection States
     vehicleCards.forEach(c => {
       const isTarget = c.getAttribute('data-vehicle-target') === targetId;
       c.classList.toggle('active', isTarget);
       c.setAttribute('aria-selected', isTarget ? 'true' : 'false');
     });
 
-    // Show only target vehicle detail panel
     vehiclePanels.forEach(panel => {
       if (panel.id === targetId) {
         panel.classList.add('active');
@@ -187,23 +254,6 @@ document.addEventListener('DOMContentLoaded', () => {
         panel.style.display = 'none';
       }
     });
-
-    // Auto-sync booking dropdown if present
-    if (vehicleDropdown) {
-      if (targetId === 'vehicle-wagonr') {
-        vehicleDropdown.value = '5 Seater Budget — Maruti Suzuki WagonR (4+1 AC)';
-      } else if (targetId === 'vehicle-dzire') {
-        vehicleDropdown.value = '5 Seater Sedan — Maruti Suzuki Dzire (4+1 AC Sedan)';
-      } else if (targetId === 'vehicle-ertiga') {
-        vehicleDropdown.value = '7 Seater MUV — Maruti Suzuki Ertiga (6+1 AC)';
-      } else if (targetId === 'vehicle-innova') {
-        vehicleDropdown.value = '7 Seater Luxury — Toyota Innova Crysta (6+1 / 7+1)';
-      } else if (targetId === 'vehicle-tempo') {
-        vehicleDropdown.value = 'Tempo Traveller (12 - 18 Seater Luxury AC Van)';
-      } else if (targetId === 'vehicle-bus') {
-        vehicleDropdown.value = 'Tourist Bus / Mini Bus (21 - 35+ Seater Coach)';
-      }
-    }
   };
 
   vehicleCards.forEach(card => {
@@ -213,66 +263,48 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Check URL query param or hash on load to open specific vehicle
-  const urlParams = new URLSearchParams(window.location.search);
-  const vehicleParam = urlParams.get('vehicle');
-  const hashParam = window.location.hash.replace('#', '');
-  const selectedVehicle = vehicleParam || (hashParam.startsWith('vehicle-') ? hashParam : null);
-
-  if (selectedVehicle) {
-    activateVehicle(selectedVehicle);
-  }
-
-
-  // 8. Vehicle Image Lightbox Modal
+  // 8. Vehicle Lightbox Modal
   const lightboxModal = document.getElementById('vehicleLightbox');
   const lightboxImg = document.getElementById('lightboxImg');
   const lightboxCaption = document.getElementById('lightboxCaption');
   const lightboxClose = document.getElementById('lightboxClose');
-  const lightboxOverlay = document.getElementById('lightboxOverlay');
-  const lightboxTriggers = document.querySelectorAll('[data-lightbox]');
+  const lightboxTriggers = document.querySelectorAll('.lightbox-trigger');
 
   const openLightbox = (src, caption) => {
-    if (!lightboxModal || !lightboxImg) return;
-    lightboxImg.src = src;
-    if (lightboxCaption) {
-      lightboxCaption.textContent = caption || 'MSG Travels Fleet';
+    if (lightboxModal && lightboxImg) {
+      lightboxImg.src = src;
+      if (lightboxCaption) lightboxCaption.textContent = caption || 'Vehicle Inspection View';
+      lightboxModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
     }
-    lightboxModal.classList.add('open');
-    lightboxModal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
   };
 
   const closeLightbox = () => {
-    if (!lightboxModal) return;
-    lightboxModal.classList.remove('open');
-    lightboxModal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
+    if (lightboxModal) {
+      lightboxModal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
   };
 
-  lightboxTriggers.forEach(trigger => {
-    trigger.addEventListener('click', (e) => {
+  lightboxTriggers.forEach(btn => {
+    btn.addEventListener('click', (e) => {
       e.stopPropagation();
-      const imgSrc = trigger.getAttribute('data-lightbox') || trigger.querySelector('img')?.src;
-      const caption = trigger.getAttribute('data-caption') || trigger.querySelector('img')?.alt || '';
-      if (imgSrc) {
-        openLightbox(imgSrc, caption);
-      }
+      const src = btn.getAttribute('data-img-src');
+      const caption = btn.getAttribute('data-caption');
+      openLightbox(src, caption);
     });
   });
 
-  if (lightboxClose) {
-    lightboxClose.addEventListener('click', closeLightbox);
-  }
-  if (lightboxOverlay) {
-    lightboxOverlay.addEventListener('click', closeLightbox);
+  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+  if (lightboxModal) {
+    lightboxModal.addEventListener('click', (e) => {
+      if (e.target === lightboxModal) closeLightbox();
+    });
   }
 
-  // Keyboard accessibility (ESC to close lightbox)
-  window.addEventListener('keydown', (e) => {
+  document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && lightboxModal && lightboxModal.classList.contains('open')) {
       closeLightbox();
     }
   });
 });
-
