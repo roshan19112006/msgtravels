@@ -168,32 +168,63 @@ document.addEventListener('DOMContentLoaded', () => {
       const time = document.getElementById('bookTime')?.value || 'Flexible';
       const tripType = document.querySelector('input[name="tripType"]:checked')?.value || 'One Way';
 
-      let text = `*New Trip Booking Request — MSG Travels*
-`;
-      text += `━━━━━━━━━━━━━━━━━━━━━
-`;
-      text += `🚖 *Service Type:* ${selectedTab} (${tripType})
-`;
-      text += `🚘 *Selected Cab:* ${selectedCab}
-`;
-      text += `👤 *Customer Name:* ${name}
-`;
-      text += `📞 *Phone Number:* ${phone}
-`;
-      text += `🟢 *From:* ${fromLoc}
-`;
-      text += `🔴 *To:* ${toLoc}
-`;
-      text += `📅 *Date:* ${date}  ⏰ *Time:* ${time}
-`;
-      text += `━━━━━━━━━━━━━━━━━━━━━
-`;
+      let text = `*New Trip Booking Request — MSG Travels*\n`;
+      text += `━━━━━━━━━━━━━━━━━━━━━\n`;
+      text += `🚖 *Service Type:* ${selectedTab} (${tripType})\n`;
+      text += `🚘 *Selected Cab:* ${selectedCab}\n`;
+      text += `👤 *Customer Name:* ${name}\n`;
+      text += `📞 *Phone Number:* ${phone}\n`;
+      text += `🟢 *From:* ${fromLoc}\n`;
+      text += `🔴 *To:* ${toLoc}\n`;
+      text += `📅 *Date:* ${date}  ⏰ *Time:* ${time}\n`;
+      text += `━━━━━━━━━━━━━━━━━━━━━\n`;
       text += `_Please confirm vehicle availability and send the best transparent fare estimate._`;
 
       const whatsappUrl = `https://api.whatsapp.com/send?phone=919942928239&text=${encodeURIComponent(text)}`;
       window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
     });
   }
+
+  // Quick Booking Form (Pre-filled WhatsApp Submission)
+  const quickBookingForm = document.getElementById('bookingForm');
+  if (quickBookingForm) {
+    quickBookingForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('custName')?.value.trim() || 'Guest';
+      const date = document.getElementById('travelDate')?.value || 'Flexible';
+      const vehicle = document.getElementById('vehicleChoice')?.value || 'Toyota Innova Crysta / Dzire';
+      const passengers = document.getElementById('passengerCount')?.value || '1-4 Persons';
+      const pickup = document.getElementById('pickupLocation')?.value.trim() || 'Salem';
+      const message = document.getElementById('custMessage')?.value.trim();
+
+      let text = `*New Salem ➔ Yercaud Trip Booking Request*\n`;
+      text += `━━━━━━━━━━━━━━━━━━━━━\n`;
+      text += `👤 *Name:* ${name}\n`;
+      text += `📅 *Travel Date:* ${date}\n`;
+      text += `🚘 *Vehicle Choice:* ${vehicle}\n`;
+      text += `👥 *Passengers:* ${passengers}\n`;
+      text += `📍 *Pickup Area:* ${pickup}\n`;
+      if (message) text += `💬 *Special Notes:* ${message}\n`;
+      text += `━━━━━━━━━━━━━━━━━━━━━\n`;
+      text += `_Please share availability and package fare details._`;
+
+      const whatsappUrl = `https://api.whatsapp.com/send?phone=919942928239&text=${encodeURIComponent(text)}`;
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    });
+  }
+
+  // 5. FAQ Accordion Logic
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    if (question) {
+      question.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        faqItems.forEach(other => other.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
+      });
+    }
+  });
 
   // 5. Sightseeing Interactive Filter
   const filterBtns = document.querySelectorAll('.filter-btn');
