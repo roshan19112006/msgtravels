@@ -267,32 +267,63 @@ document.addEventListener('DOMContentLoaded', () => {
   const vehicleCards = document.querySelectorAll('.vehicle-select-card');
   const vehiclePanels = document.querySelectorAll('.vehicle-detail-panel');
 
-  const activateVehicle = (targetId) => {
+  const activateVehicle = (targetId, shouldScroll = false) => {
     if (!targetId) return;
 
+    // Normalize targetId (e.g. 'wagonr' -> 'vehicle-wagonr')
+    let cleanId = targetId.replace('#', '').trim();
+    if (!cleanId.startsWith('vehicle-') && !document.getElementById(cleanId)) {
+      cleanId = `vehicle-${cleanId}`;
+    }
+
+    let foundPanel = null;
+
     vehicleCards.forEach(c => {
-      const isTarget = c.getAttribute('data-vehicle-target') === targetId;
+      const cardTarget = c.getAttribute('data-vehicle-target');
+      const isTarget = cardTarget === cleanId || cardTarget === targetId;
       c.classList.toggle('active', isTarget);
       c.setAttribute('aria-selected', isTarget ? 'true' : 'false');
     });
 
     vehiclePanels.forEach(panel => {
-      if (panel.id === targetId) {
+      if (panel.id === cleanId || panel.id === targetId) {
         panel.classList.add('active');
         panel.style.display = 'block';
+        foundPanel = panel;
       } else {
         panel.classList.remove('active');
         panel.style.display = 'none';
       }
     });
+
+    if (shouldScroll && foundPanel) {
+      setTimeout(() => {
+        const headerOffset = 90;
+        const panelRect = foundPanel.getBoundingClientRect();
+        const offsetPosition = panelRect.top + window.pageYOffset - headerOffset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }, 50);
+    }
   };
 
   vehicleCards.forEach(card => {
     card.addEventListener('click', () => {
       const targetId = card.getAttribute('data-vehicle-target');
-      activateVehicle(targetId);
+      activateVehicle(targetId, true);
     });
   });
+
+  // URL Parameter & Hash Auto-Activation (e.g. vehicles.html?vehicle=vehicle-wagonr)
+  const urlParams = new URLSearchParams(window.location.search);
+  const vehicleQuery = urlParams.get('vehicle') || (window.location.hash ? window.location.hash.replace('#', '') : null);
+  if (vehicleQuery && vehiclePanels.length > 0) {
+    setTimeout(() => {
+      activateVehicle(vehicleQuery, true);
+    }, 120);
+  }
 
   // 8. Vehicle Lightbox Modal
   const lightboxModal = document.getElementById('vehicleLightbox');
