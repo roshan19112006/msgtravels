@@ -167,40 +167,58 @@ document.addEventListener('DOMContentLoaded', () => {
   const vehiclePanels = document.querySelectorAll('.vehicle-detail-panel');
   const vehicleDropdown = document.getElementById('vehicleChoice');
 
+  const activateVehicle = (targetId) => {
+    if (!targetId) return;
+
+    // Update Tab Selection States
+    vehicleCards.forEach(c => {
+      const isTarget = c.getAttribute('data-vehicle-target') === targetId;
+      c.classList.toggle('active', isTarget);
+      c.setAttribute('aria-selected', isTarget ? 'true' : 'false');
+    });
+
+    // Show only target vehicle detail panel
+    vehiclePanels.forEach(panel => {
+      if (panel.id === targetId) {
+        panel.classList.add('active');
+        panel.style.display = 'block';
+      } else {
+        panel.classList.remove('active');
+        panel.style.display = 'none';
+      }
+    });
+
+    // Auto-sync booking dropdown if present
+    if (vehicleDropdown) {
+      if (targetId === 'vehicle-dzire') {
+        vehicleDropdown.value = '5 Seater — Maruti Suzuki Dzire (4+1 AC Sedan)';
+      } else if (targetId === 'vehicle-innova') {
+        vehicleDropdown.value = '7 Seater — Toyota Innova Crysta (6+1 / 7+1 MUV)';
+      } else if (targetId === 'vehicle-tempo') {
+        vehicleDropdown.value = 'Tempo Traveller (12 - 18 Seater Luxury AC Van)';
+      } else if (targetId === 'vehicle-bus') {
+        vehicleDropdown.value = 'Tourist Bus / Mini Bus (21 - 35+ Seater Coach)';
+      }
+    }
+  };
+
   vehicleCards.forEach(card => {
     card.addEventListener('click', () => {
       const targetId = card.getAttribute('data-vehicle-target');
-      if (!targetId) return;
-
-      // Update Tab Selection States
-      vehicleCards.forEach(c => {
-        c.classList.remove('active');
-        c.setAttribute('aria-selected', 'false');
-      });
-      card.classList.add('active');
-      card.setAttribute('aria-selected', 'true');
-
-      // Show only target vehicle detail panel
-      vehiclePanels.forEach(panel => {
-        if (panel.id === targetId) {
-          panel.classList.add('active');
-          panel.style.display = 'block';
-        } else {
-          panel.classList.remove('active');
-          panel.style.display = 'none';
-        }
-      });
-
-      // Auto-sync booking dropdown if present
-      if (vehicleDropdown) {
-        if (targetId === 'vehicle-innova') {
-          vehicleDropdown.value = 'Toyota Innova Crysta (6+1 / 7+1)';
-        } else if (targetId === 'vehicle-dzire') {
-          vehicleDropdown.value = 'Maruti Suzuki Dzire (4+1)';
-        }
-      }
+      activateVehicle(targetId);
     });
   });
+
+  // Check URL query param or hash on load to open specific vehicle
+  const urlParams = new URLSearchParams(window.location.search);
+  const vehicleParam = urlParams.get('vehicle');
+  const hashParam = window.location.hash.replace('#', '');
+  const selectedVehicle = vehicleParam || (hashParam.startsWith('vehicle-') ? hashParam : null);
+
+  if (selectedVehicle) {
+    activateVehicle(selectedVehicle);
+  }
+
 
   // 8. Vehicle Image Lightbox Modal
   const lightboxModal = document.getElementById('vehicleLightbox');

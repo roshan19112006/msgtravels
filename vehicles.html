@@ -183,7 +183,29 @@
 
         <!-- Vehicle Image Selector Tabs (Click Vehicle to View) -->
         <div class="vehicle-selector-grid" role="tablist" aria-label="Vehicle Fleet Selector">
-          <!-- Innova Crysta Selector Card -->
+          <!-- 5 Seater: Maruti Suzuki Dzire -->
+          <button type="button" class="vehicle-select-card" data-vehicle-target="vehicle-dzire" role="tab" aria-selected="false" aria-controls="vehicle-dzire" id="tab-dzire">
+            <div class="vehicle-select-img-wrap">
+              <img src="images/fleet_dzire.jpg" alt="Maruti Suzuki Dzire AC Sedan Cab Salem to Yercaud TN29BS6246">
+              <span class="vehicle-click-hint">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                Click to View
+              </span>
+              <span class="vehicle-badge-tag">5 SEATER SEDAN</span>
+            </div>
+            <div class="vehicle-select-info">
+              <div class="vehicle-select-title-row">
+                <h4>Maruti Dzire</h4>
+                <span class="vehicle-select-seat">4+1 Seater</span>
+              </div>
+              <span class="vehicle-select-reg">Reg: TN 29 BS 6246</span>
+              <div class="vehicle-active-indicator">
+                <span class="indicator-dot"></span> Currently Viewing Details
+              </div>
+            </div>
+          </button>
+
+          <!-- 7 Seater: Innova Crysta -->
           <button type="button" class="vehicle-select-card active" data-vehicle-target="vehicle-innova" role="tab" aria-selected="true" aria-controls="vehicle-innova" id="tab-innova">
             <div class="vehicle-select-img-wrap">
               <img src="images/fleet_innova.jpg" alt="Toyota Innova Crysta Cab Salem to Yercaud TN09CL5713">
@@ -191,11 +213,11 @@
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                 Click to View
               </span>
-              <span class="vehicle-badge-tag">LUXURY MUV / SUV</span>
+              <span class="vehicle-badge-tag">7 SEATER MUV</span>
             </div>
             <div class="vehicle-select-info">
               <div class="vehicle-select-title-row">
-                <h4>Toyota Innova Crysta</h4>
+                <h4>Innova Crysta</h4>
                 <span class="vehicle-select-seat">6+1 & 7+1</span>
               </div>
               <span class="vehicle-select-reg">Reg: TN 09 CL 5713</span>
@@ -205,22 +227,44 @@
             </div>
           </button>
 
-          <!-- Maruti Suzuki Dzire Selector Card -->
-          <button type="button" class="vehicle-select-card" data-vehicle-target="vehicle-dzire" role="tab" aria-selected="false" aria-controls="vehicle-dzire" id="tab-dzire">
+          <!-- Tempo Traveller -->
+          <button type="button" class="vehicle-select-card" data-vehicle-target="vehicle-tempo" role="tab" aria-selected="false" aria-controls="vehicle-tempo" id="tab-tempo">
             <div class="vehicle-select-img-wrap">
-              <img src="images/fleet_dzire.jpg" alt="Maruti Suzuki Dzire AC Sedan Cab Salem to Yercaud TN29BS6246">
+              <img src="images/tempo_traveller.jpg" alt="Tempo Traveller 12-18 Seater AC Van Salem to Yercaud">
               <span class="vehicle-click-hint">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                 Click to View
               </span>
-              <span class="vehicle-badge-tag">COMFORT AC SEDAN</span>
+              <span class="vehicle-badge-tag">TEMPO TRAVELLER</span>
             </div>
             <div class="vehicle-select-info">
               <div class="vehicle-select-title-row">
-                <h4>Maruti Suzuki Dzire</h4>
-                <span class="vehicle-select-seat">4+1 Seater</span>
+                <h4>Tempo Traveller</h4>
+                <span class="vehicle-select-seat">12 - 18 Seater</span>
               </div>
-              <span class="vehicle-select-reg">Reg: TN 29 BS 6246</span>
+              <span class="vehicle-select-reg">Commercial Tourist Van</span>
+              <div class="vehicle-active-indicator">
+                <span class="indicator-dot"></span> Currently Viewing Details
+              </div>
+            </div>
+          </button>
+
+          <!-- Tourist Bus -->
+          <button type="button" class="vehicle-select-card" data-vehicle-target="vehicle-bus" role="tab" aria-selected="false" aria-controls="vehicle-bus" id="tab-bus">
+            <div class="vehicle-select-img-wrap">
+              <img src="images/tourist_bus.jpg" alt="Luxury Tourist Bus Coach Salem to Yercaud">
+              <span class="vehicle-click-hint">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                Click to View
+              </span>
+              <span class="vehicle-badge-tag">TOURIST BUS / COACH</span>
+            </div>
+            <div class="vehicle-select-info">
+              <div class="vehicle-select-title-row">
+                <h4>Luxury Tourist Bus</h4>
+                <span class="vehicle-select-seat">21 - 35+ Seater</span>
+              </div>
+              <span class="vehicle-select-reg">Group Tour Coach</span>
               <div class="vehicle-active-indicator">
                 <span class="indicator-dot"></span> Currently Viewing Details
               </div>
@@ -231,17 +275,70 @@
         <!-- Selected Vehicle Spotlight (Visible only for clicked vehicle) -->
         <div class="vehicle-details-container">
           
-          <!-- Detailed View 1: Innova Crysta -->
+          <!-- Detailed View 1: 5 Seater Dzire -->
+          <article class="vehicle-detail-panel" id="vehicle-dzire" role="tabpanel" aria-labelledby="tab-dzire" style="display: none;">
+            <div class="vehicle-spotlight-card">
+              <div class="vehicle-spotlight-media">
+                <div class="vehicle-main-img-box" data-lightbox="images/fleet_dzire.jpg" data-caption="Maruti Suzuki Dzire (4+1 Comfort AC Sedan - 5 Seater) — Reg: TN 29 BS 6246">
+                  <img src="images/fleet_dzire.jpg" alt="Maruti Suzuki Dzire AC Sedan Cab Salem to Yercaud TN29BS6246" class="zoomable-img">
+                  <div class="img-overlay-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                    <span>Click Photo to Enlarge</span>
+                  </div>
+                  <span class="vehicle-type-pill">5 SEATER (4+1 AC SEDAN)</span>
+                  <span class="vehicle-reg-pill">Reg: TN 29 BS 6246</span>
+                </div>
+              </div>
+
+              <div class="vehicle-spotlight-content">
+                <div>
+                  <div class="vehicle-title-bar">
+                    <div>
+                      <span class="section-tag" style="margin-bottom: 6px; font-size: 0.72rem; padding: 2px 10px;">Economical & Smooth Sedan</span>
+                      <h3 class="vehicle-name">5 Seater — Maruti Suzuki Dzire</h3>
+                      <p class="vehicle-subtext">Commercial Yellow Board • TN 29 BS 6246 • Chilled AC</p>
+                    </div>
+                    <span class="vehicle-cap-badge">4+1 Seater</span>
+                  </div>
+
+                  <p class="vehicle-desc">
+                    Clean, compact, and highly economical. Smooth ride quality with chilled air conditioning, plush cushioning, and easy agility across narrow scenic Yercaud loop roads for couples, solo travelers, and small families (1-4 Passengers).
+                  </p>
+
+                  <div class="vehicle-specs-grid">
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>AC:</strong> Chilled Climate Control Air Conditioning</div>
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Seating:</strong> Plush Cushioned Ergonomic Seats</div>
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Luggage:</strong> 2 Large Suitcases Trunk Boot</div>
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Agility:</strong> Easy maneuver on 32-km loop road</div>
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Suspension:</strong> Quiet & Smooth Mountain Drive</div>
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Sanitization:</strong> 100% Disinfected & Cleaned</div>
+                  </div>
+                </div>
+
+                <div class="vehicle-action-row">
+                  <a href="https://wa.me/919942928239?text=Hello%20MSG%20Travels,%20I%20want%20to%20inquire%20and%20book%20the%205%20Seater%20Maruti%20Suzuki%20Dzire%20(4+1)%20for%20Salem%20to%20Yercaud." class="btn btn-whatsapp btn-action-large" target="_blank" rel="noopener noreferrer">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2Z"/></svg>
+                    Book 5 Seater (Dzire) on WhatsApp
+                  </a>
+                  <a href="tel:+919942928239" class="btn btn-call btn-action-call">
+                    📞 Call 9942928239
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Detailed View 2: 7 Seater Innova Crysta -->
           <article class="vehicle-detail-panel active" id="vehicle-innova" role="tabpanel" aria-labelledby="tab-innova">
             <div class="vehicle-spotlight-card">
               <div class="vehicle-spotlight-media">
-                <div class="vehicle-main-img-box" data-lightbox="images/fleet_innova.jpg" data-caption="Toyota Innova Crysta (6+1 / 7+1 Luxury MUV) — Reg: TN 09 CL 5713">
+                <div class="vehicle-main-img-box" data-lightbox="images/fleet_innova.jpg" data-caption="Toyota Innova Crysta (6+1 / 7+1 Luxury MUV - 7 Seater) — Reg: TN 09 CL 5713">
                   <img src="images/fleet_innova.jpg" alt="Toyota Innova Crysta Cab Salem to Yercaud TN09CL5713" class="zoomable-img">
                   <div class="img-overlay-btn">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
                     <span>Click Photo to Enlarge</span>
                   </div>
-                  <span class="vehicle-type-pill">LUXURY MUV / SUV (6+1 / 7+1)</span>
+                  <span class="vehicle-type-pill">7 SEATER (6+1 / 7+1 LUXURY MUV)</span>
                   <span class="vehicle-reg-pill">Reg: TN 09 CL 5713</span>
                 </div>
               </div>
@@ -251,14 +348,14 @@
                   <div class="vehicle-title-bar">
                     <div>
                       <span class="section-tag" style="margin-bottom: 6px; font-size: 0.72rem; padding: 2px 10px;">Premium Mountain Cruiser</span>
-                      <h3 class="vehicle-name">Toyota Innova Crysta</h3>
+                      <h3 class="vehicle-name">7 Seater — Toyota Innova Crysta</h3>
                       <p class="vehicle-subtext">Commercial Yellow Board • TN 09 CL 5713 • 100% Sanitized</p>
                     </div>
                     <span class="vehicle-cap-badge">6+1 & 7+1 Seater</span>
                   </div>
 
                   <p class="vehicle-desc">
-                    The undisputed king of hill drives. Supreme comfort, generous legroom, individual rear AC vents, and high-torque engine that glides up the 20 hairpin bends of Yercaud with effortless stability and smooth cornering.
+                    The undisputed king of hill drives. Supreme comfort, generous legroom, individual rear AC vents, and high-torque engine that glides up the 20 hairpin bends of Yercaud with effortless stability and smooth cornering for 5-7 passengers.
                   </p>
 
                   <div class="vehicle-specs-grid">
@@ -272,9 +369,9 @@
                 </div>
 
                 <div class="vehicle-action-row">
-                  <a href="https://wa.me/919942928239?text=Hello%20MSG%20Travels,%20I%20want%20to%20inquire%20and%20book%20the%20Toyota%20Innova%20Crysta%20(6+1)%20for%20Salem%20to%20Yercaud." class="btn btn-whatsapp btn-action-large" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/919942928239?text=Hello%20MSG%20Travels,%20I%20want%20to%20inquire%20and%20book%20the%207%20Seater%20Toyota%20Innova%20Crysta%20(6+1)%20for%20Salem%20to%20Yercaud." class="btn btn-whatsapp btn-action-large" target="_blank" rel="noopener noreferrer">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2Z"/></svg>
-                    Book Innova Crysta
+                    Book 7 Seater (Innova) on WhatsApp
                   </a>
                   <a href="tel:+919942928239" class="btn btn-call btn-action-call">
                     📞 Call 9942928239
@@ -284,18 +381,18 @@
             </div>
           </article>
 
-          <!-- Detailed View 2: Maruti Suzuki Dzire -->
-          <article class="vehicle-detail-panel" id="vehicle-dzire" role="tabpanel" aria-labelledby="tab-dzire">
+          <!-- Detailed View 3: Tempo Traveller (12-18 Seater) -->
+          <article class="vehicle-detail-panel" id="vehicle-tempo" role="tabpanel" aria-labelledby="tab-tempo" style="display: none;">
             <div class="vehicle-spotlight-card">
               <div class="vehicle-spotlight-media">
-                <div class="vehicle-main-img-box" data-lightbox="images/fleet_dzire.jpg" data-caption="Maruti Suzuki Dzire (4+1 Comfort AC Sedan) — Reg: TN 29 BS 6246">
-                  <img src="images/fleet_dzire.jpg" alt="Maruti Suzuki Dzire AC Sedan Cab Salem to Yercaud TN29BS6246" class="zoomable-img">
+                <div class="vehicle-main-img-box" data-lightbox="images/tempo_traveller.jpg" data-caption="Tempo Traveller (12 - 18 Seater Luxury AC Van) — Salem to Yercaud Group Tours">
+                  <img src="images/tempo_traveller.jpg" alt="Force Tempo Traveller AC Van Salem to Yercaud" class="zoomable-img">
                   <div class="img-overlay-btn">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
                     <span>Click Photo to Enlarge</span>
                   </div>
-                  <span class="vehicle-type-pill">COMFORT AC SEDAN (4+1)</span>
-                  <span class="vehicle-reg-pill">Reg: TN 29 BS 6246</span>
+                  <span class="vehicle-type-pill">TEMPO TRAVELLER (12 - 18 SEATER)</span>
+                  <span class="vehicle-reg-pill">Group Tourist Van</span>
                 </div>
               </div>
 
@@ -303,31 +400,84 @@
                 <div>
                   <div class="vehicle-title-bar">
                     <div>
-                      <span class="section-tag" style="margin-bottom: 6px; font-size: 0.72rem; padding: 2px 10px;">Economical & Smooth</span>
-                      <h3 class="vehicle-name">Maruti Suzuki Dzire</h3>
-                      <p class="vehicle-subtext">Commercial Yellow Board • TN 29 BS 6246 • Chilled AC</p>
+                      <span class="section-tag" style="margin-bottom: 6px; font-size: 0.72rem; padding: 2px 10px;">Spacious Luxury Group Van</span>
+                      <h3 class="vehicle-name">Tempo Traveller (12 - 18 Seater)</h3>
+                      <p class="vehicle-subtext">Commercial Tourist Permit • Chilled Roof AC • High Headroom</p>
                     </div>
-                    <span class="vehicle-cap-badge">4+1 Seater</span>
+                    <span class="vehicle-cap-badge">12 - 18 Seater</span>
                   </div>
 
                   <p class="vehicle-desc">
-                    Clean, compact, and highly economical. Smooth ride quality with chilled air conditioning, plush cushioning, and easy agility across narrow scenic Yercaud loop roads for couples, small families, and solo travellers.
+                    Perfect for joint families, corporate team outings, college friends, and pilgrimage groups. Features push-back luxury seats, high roof, ample walking aisle, individual AC vents, and massive rear luggage compartment.
                   </p>
 
                   <div class="vehicle-specs-grid">
-                    <div class="spec-item"><span class="spec-check">✓</span> <strong>AC:</strong> Chilled Climate Control Air Conditioning</div>
-                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Seating:</strong> Plush Cushioned Seats (4+1)</div>
-                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Luggage:</strong> 2 Large Suitcases Trunk Boot</div>
-                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Agility:</strong> Easy maneuver on 32-km loop road</div>
-                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Suspension:</strong> Quiet & Smooth Mountain Drive</div>
-                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Sanitization:</strong> 100% Disinfected & Vacuumed</div>
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>AC:</strong> Dual Chilled Roof AC Vents</div>
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Seating:</strong> 12 / 14 / 17 / 18 Push-back Seats</div>
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Luggage:</strong> Dedicated Rear Luggage Deck</div>
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Entertainment:</strong> Music System & Mic</div>
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Hill Power:</strong> High-Torque CRDe Turbo Engine</div>
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Driver:</strong> Ghat-Certified Mountain Specialist</div>
                   </div>
                 </div>
 
                 <div class="vehicle-action-row">
-                  <a href="https://wa.me/919942928239?text=Hello%20MSG%20Travels,%20I%20want%20to%20inquire%20and%20book%20the%20Maruti%20Suzuki%20Dzire%20(4+1)%20for%20Salem%20to%20Yercaud." class="btn btn-whatsapp btn-action-large" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/919942928239?text=Hello%20MSG%20Travels,%20I%20want%20to%20inquire%20and%20book%20a%20Tempo%20Traveller%20(12-18%20Seater)%20for%20Salem%20to%20Yercaud%20trip." class="btn btn-whatsapp btn-action-large" target="_blank" rel="noopener noreferrer">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2Z"/></svg>
-                    Book Dzire Sedan
+                    Enquire Tempo Traveller on WhatsApp
+                  </a>
+                  <a href="tel:+919942928239" class="btn btn-call btn-action-call">
+                    📞 Call 9942928239
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Detailed View 4: Tourist Bus (21-35+ Seater) -->
+          <article class="vehicle-detail-panel" id="vehicle-bus" role="tabpanel" aria-labelledby="tab-bus" style="display: none;">
+            <div class="vehicle-spotlight-card">
+              <div class="vehicle-spotlight-media">
+                <div class="vehicle-main-img-box" data-lightbox="images/tourist_bus.jpg" data-caption="Luxury Tourist Bus / Coach (21 - 35+ Seater) — Salem to Yercaud Group Tours">
+                  <img src="images/tourist_bus.jpg" alt="Luxury Tourist Bus Coach Salem to Yercaud" class="zoomable-img">
+                  <div class="img-overlay-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                    <span>Click Photo to Enlarge</span>
+                  </div>
+                  <span class="vehicle-type-pill">TOURIST BUS / COACH (21 - 35+ SEATER)</span>
+                  <span class="vehicle-reg-pill">Large Group Coach</span>
+                </div>
+              </div>
+
+              <div class="vehicle-spotlight-content">
+                <div>
+                  <div class="vehicle-title-bar">
+                    <div>
+                      <span class="section-tag" style="margin-bottom: 6px; font-size: 0.72rem; padding: 2px 10px;">Large Group & Tour Coach</span>
+                      <h3 class="vehicle-name">Luxury Tourist Bus (21 - 35+ Seater)</h3>
+                      <p class="vehicle-subtext">All-India Tourist Permit • Air-Suspension • 2x2 Push Back</p>
+                    </div>
+                    <span class="vehicle-cap-badge">21 - 35+ Seater</span>
+                  </div>
+
+                  <p class="vehicle-desc">
+                    Ideal for school excursions, college industrial visits, large wedding guest transfers, and corporate conventions. Complete safety certified for mountain routes with experienced dual hill drivers.
+                  </p>
+
+                  <div class="vehicle-specs-grid">
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>AC / Non-AC:</strong> Climate Controlled Interior</div>
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Seating:</strong> 21, 25, 32, 35+ Push-Back 2x2 Seats</div>
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Luggage:</strong> Massive Underbelly Luggage Bays</div>
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Sound & Video:</strong> LED TV & Multi-speaker Sound</div>
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Comfort:</strong> Air-Suspension Shock Absorbers</div>
+                    <div class="spec-item"><span class="spec-check">✓</span> <strong>Permit:</strong> Full Commercial Tourist Permits</div>
+                  </div>
+                </div>
+
+                <div class="vehicle-action-row">
+                  <a href="https://wa.me/919942928239?text=Hello%20MSG%20Travels,%20I%20want%20to%20inquire%20and%20book%20a%20Tourist%20Bus%20(21-35+%20Seater)%20for%20Salem%20to%20Yercaud%20tour." class="btn btn-whatsapp btn-action-large" target="_blank" rel="noopener noreferrer">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2Z"/></svg>
+                    Enquire Tourist Bus on WhatsApp
                   </a>
                   <a href="tel:+919942928239" class="btn btn-call btn-action-call">
                     📞 Call 9942928239
@@ -422,18 +572,20 @@
                 <div class="form-group">
                   <label for="vehicleChoice">Select Vehicle *</label>
                   <select id="vehicleChoice" class="form-control" required>
-                    <option value="Toyota Innova Crysta (6+1 / 7+1)">Toyota Innova Crysta (6+1 / 7+1 Luxury MUV)</option>
-                    <option value="Maruti Suzuki Dzire (4+1)" selected>Maruti Suzuki Dzire (4+1 AC Sedan)</option>
-                    <option value="Help Me Choose (Based on Group)">Help Me Choose (Based on Group Size)</option>
+                    <option value="5 Seater — Maruti Suzuki Dzire (4+1 AC Sedan)">5 Seater — Maruti Suzuki Dzire (4+1 AC Sedan)</option>
+                    <option value="7 Seater — Toyota Innova Crysta (6+1 / 7+1 MUV)" selected>7 Seater — Toyota Innova Crysta (6+1 / 7+1 MUV)</option>
+                    <option value="Tempo Traveller (12 - 18 Seater Luxury AC Van)">Tempo Traveller (12 - 18 Seater Luxury AC Van)</option>
+                    <option value="Tourist Bus / Mini Bus (21 - 35+ Seater Coach)">Tourist Bus / Mini Bus (21 - 35+ Seater Coach)</option>
+                    <option value="Help Me Choose (Based on Group Size)">Help Me Choose (Based on Group Size)</option>
                   </select>
                 </div>
                 <div class="form-group">
                   <label for="passengerCount">Passenger Count *</label>
                   <select id="passengerCount" class="form-control" required>
-                    <option value="1-2">1 - 2 Persons</option>
-                    <option value="3-4" selected>3 - 4 Persons</option>
-                    <option value="5-7">5 - 7 Persons (Innova)</option>
-                    <option value="8+">8+ Group Tour</option>
+                    <option value="1-4 (5 Seater Sedan)">1 - 4 Persons (5 Seater Sedan)</option>
+                    <option value="5-7 (7 Seater Innova)" selected>5 - 7 Persons (7 Seater Innova)</option>
+                    <option value="8-18 (Tempo Traveller)">8 - 18 Persons (Tempo Traveller)</option>
+                    <option value="20-35+ (Tourist Bus)">20 - 35+ Persons (Tourist Bus)</option>
                   </select>
                 </div>
               </div>
