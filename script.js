@@ -192,13 +192,15 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const name = document.getElementById('custName')?.value.trim() || 'Guest';
       const date = document.getElementById('travelDate')?.value || 'Flexible';
-      const vehicle = document.getElementById('vehicleChoice')?.value || 'Toyota Innova Crysta / Dzire';
+      const destination = document.getElementById('destinationChoice')?.value || 'Yercaud (1-2 Days)';
+      const vehicle = document.getElementById('vehicleChoice')?.value || 'Maruti Suzuki Dzire (4+1)';
       const passengers = document.getElementById('passengerCount')?.value || '1-4 Persons';
       const pickup = document.getElementById('pickupLocation')?.value.trim() || 'Salem';
       const message = document.getElementById('custMessage')?.value.trim();
 
-      let text = `*New Salem ➔ Yercaud Trip Booking Request*\n`;
+      let text = `*New Hill Station Tour Booking Request — MSG Travels*\n`;
       text += `━━━━━━━━━━━━━━━━━━━━━\n`;
+      text += `🏔️ *Destination:* ${destination}\n`;
       text += `👤 *Name:* ${name}\n`;
       text += `📅 *Travel Date:* ${date}\n`;
       text += `🚘 *Vehicle Choice:* ${vehicle}\n`;
@@ -206,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
       text += `📍 *Pickup Area:* ${pickup}\n`;
       if (message) text += `💬 *Special Notes:* ${message}\n`;
       text += `━━━━━━━━━━━━━━━━━━━━━\n`;
-      text += `_Please share availability and package fare details._`;
+      text += `_Please share vehicle availability and best transparent package fare._`;
 
       const whatsappUrl = `https://api.whatsapp.com/send?phone=919942928239&text=${encodeURIComponent(text)}`;
       window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
@@ -226,27 +228,122 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 5. Sightseeing Interactive Filter
-  const filterBtns = document.querySelectorAll('.filter-btn');
+  // 6. Hill Station & Category Multi-Filter (sightseeing.html)
+  const hsTabBtns = document.querySelectorAll('.hs-tab-btn[data-hillstation]');
+  const subfilterBtns = document.querySelectorAll('.subfilter-btn');
   const sightCards = document.querySelectorAll('.sightseeing-card');
+  const bannerTitle = document.getElementById('hsBannerTitle');
+  const bannerDesc = document.getElementById('hsBannerDesc');
 
-  filterBtns.forEach(btn => {
+  let activeHillstation = 'all';
+  let activeSubfilter = 'all';
+
+  const hillStationInfo = {
+    all: {
+      title: 'Explore <span>South India\'s Best Hills</span>',
+      desc: 'From the 20 hairpin bends of Yercaud and the Nilgiri peaks of Ooty to the misty pine forests of Kodaikanal and the rolling emerald tea carpets of Munnar — travel safely with senior hill drivers.'
+    },
+    yercaud: {
+      title: 'Explore <span>Yercaud (Jewel of the South)</span>',
+      desc: 'Located in the Shevaroy Hills at 4,970 ft. Famous for its 20 hairpin bends, emerald boating lake, 32-km loop road through coffee estates, and cool mountain weather.'
+    },
+    ooty: {
+      title: 'Explore <span>Ooty & Coonoor (Queen of Hills)</span>',
+      desc: 'Perched in the Nilgiris at 7,350 ft. Renowned for Doddabetta summit (8,650 ft), vast stepped tea estates, Government Botanical Garden, Pykara speedboating, and colonial charm.'
+    },
+    kodaikanal: {
+      title: 'Explore <span>Kodaikanal (Princess of Hills)</span>',
+      desc: 'Nestled in the Palani Hills at 7,000 ft. Highlighted by the iconic star-shaped lake, Coaker\'s cloud walk, 400 ft Pillar Rocks, Silver Cascade waterfalls, and dense pine forests.'
+    },
+    munnar: {
+      title: 'Explore <span>Munnar (Tea Paradise of Kerala)</span>',
+      desc: 'South India\'s premier tea hill station at 5,200 ft in the Western Ghats. Known for rolling velvet tea carpets, Mattupetty dam, Kundala arch lake, and Eravikulam National Park.'
+    }
+  };
+
+  const applySightseeingFilters = () => {
+    sightCards.forEach(card => {
+      const cardHs = card.getAttribute('data-hillstation');
+      const cardCat = card.getAttribute('data-category');
+
+      const matchesHs = (activeHillstation === 'all' || cardHs === activeHillstation);
+      const matchesCat = (activeSubfilter === 'all' || cardCat === activeSubfilter);
+
+      if (matchesHs && matchesCat) {
+        card.style.display = 'flex';
+        card.style.opacity = '0';
+        setTimeout(() => {
+          card.style.transition = 'opacity 0.35s ease';
+          card.style.opacity = '1';
+        }, 15);
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    // Update banner text if available
+    if (bannerTitle && bannerDesc && hillStationInfo[activeHillstation]) {
+      bannerTitle.innerHTML = hillStationInfo[activeHillstation].title;
+      bannerDesc.textContent = hillStationInfo[activeHillstation].desc;
+    }
+  };
+
+  hsTabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
+      hsTabBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      const filter = btn.getAttribute('data-filter');
+      activeHillstation = btn.getAttribute('data-hillstation') || 'all';
+      applySightseeingFilters();
+    });
+  });
 
-      sightCards.forEach(card => {
-        const category = card.getAttribute('data-category');
-        if (filter === 'all' || category === filter) {
-          card.style.display = 'flex';
-          card.style.opacity = '0';
-          setTimeout(() => {
-            card.style.transition = 'opacity 0.4s ease';
-            card.style.opacity = '1';
-          }, 20);
+  subfilterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      subfilterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeSubfilter = btn.getAttribute('data-subfilter') || 'all';
+      applySightseeingFilters();
+    });
+  });
+
+  // Auto-activate Hill Station on sightseeing.html from URL (e.g. sightseeing.html?hillstation=ooty or #ooty)
+  const urlHsParams = new URLSearchParams(window.location.search);
+  const rawHsParam = urlHsParams.get('hillstation') || urlHsParams.get('destination') || (window.location.hash ? window.location.hash.replace('#', '').toLowerCase() : null);
+  if (rawHsParam && hsTabBtns.length > 0) {
+    let cleanHs = rawHsParam.trim().toLowerCase();
+    if (cleanHs.includes('yercaud')) cleanHs = 'yercaud';
+    else if (cleanHs.includes('ooty')) cleanHs = 'ooty';
+    else if (cleanHs.includes('kodai')) cleanHs = 'kodaikanal';
+    else if (cleanHs.includes('munnar')) cleanHs = 'munnar';
+
+    hsTabBtns.forEach(btn => {
+      const btnHs = btn.getAttribute('data-hillstation');
+      if (btnHs === cleanHs) {
+        hsTabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeHillstation = cleanHs;
+      }
+    });
+    applySightseeingFilters();
+  }
+
+  // 7. Itinerary Roadmap Tab Switcher (experience.html)
+  const itinTabBtns = document.querySelectorAll('.hs-tab-btn[data-itin-target]');
+  const itinPanels = document.querySelectorAll('.itin-panel');
+
+  itinTabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      itinTabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const targetId = btn.getAttribute('data-itin-target');
+
+      itinPanels.forEach(panel => {
+        if (panel.id === targetId) {
+          panel.classList.add('active');
+          panel.style.display = 'block';
         } else {
-          card.style.display = 'none';
+          panel.classList.remove('active');
+          panel.style.display = 'none';
         }
       });
     });

@@ -77,7 +77,7 @@
     <div class="container header-inner">
       <a href="index.html" class="brand-logo" aria-label="MSG Travels Home">
         <div class="brand-badge"><img src="images/logo.png" alt="Salem MSG Travels" class="brand-logo-img"></div>
-        <div class="brand-text-wrap"><span class="brand-title">MSG <span>TRAVELS</span></span><span class="brand-subtitle">Salem • Yercaud Tours</span></div>
+        <div class="brand-text-wrap"><span class="brand-title">MSG <span>TRAVELS</span></span></div>
       </a>
 
       <nav aria-label="Main Navigation">
@@ -112,7 +112,7 @@
   <aside class="mobile-nav-drawer" id="mobileDrawer">
     <div>
       <div class="drawer-header">
-        <div class="brand-text-wrap"><span class="brand-title">MSG <span>TRAVELS</span></span><span class="brand-subtitle">Salem • Yercaud Expert</span></div>
+        <div class="brand-text-wrap"><span class="brand-title">MSG <span>TRAVELS</span></span></div>
         <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close Menu"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
       </div>
       <ul class="drawer-links">
@@ -247,17 +247,34 @@
 
               <div class="form-row">
                 <div class="form-group">
+                  <label for="destinationChoice">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    Destination / Hill Station
+                  </label>
+                  <select id="destinationChoice" class="form-control">
+                    <option value="Yercaud (1-2 Days)" selected>⛰️ Yercaud (1 Day / 2 Days)</option>
+                    <option value="Ooty & Coonoor (2-3 Days)">🌸 Ooty & Coonoor (2 - 3 Days)</option>
+                    <option value="Kodaikanal (2-3 Days)">🌲 Kodaikanal (2 - 3 Days)</option>
+                    <option value="Munnar (3-4 Days)">🍃 Munnar (3 - 4 Days)</option>
+                    <option value="Airport Transfer / Custom Outstation">✈️ Airport / Custom Outstation</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
                   <label for="vehicleChoice">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
                     Preferred Vehicle
                   </label>
                   <select id="vehicleChoice" class="form-control">
-                    <option value="Toyota Innova Crysta (6+1 / 7+1)">Toyota Innova Crysta (6+1 / 7+1 Luxury MUV)</option>
-                    <option value="Maruti Suzuki Dzire (4+1)" selected>Maruti Suzuki Dzire (4+1 AC Sedan)</option>
-                    <option value="Help Me Choose">Help Me Choose</option>
+                    <option value="Maruti Suzuki Dzire (4+1 AC)" selected>Maruti Suzuki Dzire (4+1 AC Sedan)</option>
+                    <option value="Maruti Suzuki Ertiga (6+1 AC)">Maruti Suzuki Ertiga (6+1 AC MUV)</option>
+                    <option value="Toyota Innova Crysta (7+1 AC)">Toyota Innova Crysta (7+1 Luxury MUV)</option>
+                    <option value="Tempo Traveller (12-18 Seater)">Tempo Traveller (Group Van)</option>
                   </select>
                 </div>
+              </div>
 
+              <div class="form-row">
                 <div class="form-group">
                   <label for="passengerCount">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
@@ -266,17 +283,18 @@
                   <select id="passengerCount" class="form-control">
                     <option value="1 to 2">1 - 2 Passengers</option>
                     <option value="3 to 4" selected>3 - 4 Passengers (Sedan)</option>
-                    <option value="5 to 7">5 - 7 Passengers (Innova Crysta)</option>
+                    <option value="5 to 7">5 - 7 Passengers (Innova / Ertiga)</option>
                     <option value="8+ Group">8+ Group Tour</option>
                   </select>
                 </div>
-              </div>
-              <div class="form-group">
-                <label for="pickupLocation">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                  Salem Pickup Address / Area
-                </label>
-                <input type="text" id="pickupLocation" class="form-control" placeholder="e.g. Salem Junction / Five Roads / Home" required>
+
+                <div class="form-group">
+                  <label for="pickupLocation">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    Salem Pickup Address / Area
+                  </label>
+                  <input type="text" id="pickupLocation" class="form-control" placeholder="e.g. Salem Junction / Five Roads / Home" required>
+                </div>
               </div>
 
               <div class="form-group">
@@ -334,15 +352,15 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <div class="brand-logo"><div class="brand-badge"><img src="images/logo.png" alt="Salem MSG Travels" class="brand-logo-img"></div><div class="brand-text-wrap"><span class="brand-title">MSG <span>TRAVELS</span></span><span class="brand-subtitle">Salem • Yercaud Expert</span></div></div>
-          <p>“Your trusted travel partner for Salem to Yercaud journeys. Safe mountain driving, comfortable 4+1 sedan car, and full-day sightseeing.”</p>
+          <div class="brand-logo"><div class="brand-badge"><img src="images/logo.png" alt="Salem MSG Travels" class="brand-logo-img"></div><div class="brand-text-wrap"><span class="brand-title">MSG <span>TRAVELS</span></span></div></div>
+          <p>“Your trusted travel partner for Yercaud, Ooty, Kodaikanal, and Munnar journeys. Safe mountain driving, comfortable sanitized AC cars, and full-day sightseeing.”</p>
         </div>
         <div>
           <h4 class="footer-heading">Pages</h4>
           <ul class="footer-links-list">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About MSG</a></li>
-            <li><a href="trip.html">Trip Package</a></li>
+            <li><a href="trip.html">Trip Packages</a></li>
             <li><a href="sightseeing.html">Sightseeing Gallery</a></li>
             <li><a href="why-us.html">Why Choose Us</a></li>
             <li><a href="experience.html">Travel Itinerary</a></li>
@@ -350,12 +368,12 @@
           </ul>
         </div>
         <div>
-          <h4 class="footer-heading">Trip Summary</h4>
+          <h4 class="footer-heading">Hill Destinations</h4>
           <div class="footer-trip-meta">
-            <div class="footer-trip-pill">🚘 Vehicle: Sedan 4+1 Seating (AC)</div>
-            <div class="footer-trip-pill">📍 Route: Salem → Yercaud → Salem</div>
-            <div class="footer-trip-pill">⏱️ Duration: One Day Round Trip</div>
-            <div class="footer-trip-pill">ℹ️ Note: Toll & Parking Extra</div>
+            <div class="footer-trip-pill">⛰️ Yercaud: 1-Day & 2-Days</div>
+            <div class="footer-trip-pill">🌸 Ooty & Coonoor: 2-3 Days</div>
+            <div class="footer-trip-pill">🌲 Kodaikanal: 2-3 Days</div>
+            <div class="footer-trip-pill">🍃 Munnar (Kerala): 3-4 Days</div>
           </div>
         </div>
       </div>

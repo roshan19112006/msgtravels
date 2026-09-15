@@ -4706,3 +4706,552 @@ textarea.form-control {
 .mobile-bottom-bar {
   display: none !important;
 }
+
+/* ==========================================================================
+   MULTI-HILLSTATION SIGHTSEEING, PACKAGES & ROADMAP STYLES
+   ========================================================================== */
+.hillstation-tabs-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0 auto 36px;
+  padding: 8px;
+  background: #ffffff;
+  border-radius: 100px;
+  border: 1px solid rgba(14, 59, 39, 0.12);
+  box-shadow: 0 4px 20px rgba(14, 59, 39, 0.06);
+  max-width: fit-content;
+}
+
+.hs-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 100px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #334155;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+
+.hs-tab-btn:hover {
+  color: var(--color-primary);
+  background: rgba(14, 59, 39, 0.05);
+}
+
+.hs-tab-btn.active {
+  background: linear-gradient(135deg, #0e3b27 0%, #16a34a 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(14, 59, 39, 0.25);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.hs-tab-btn .hs-tab-icon {
+  font-size: 1.1rem;
+}
+
+.hs-tab-btn .hs-count {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.07);
+}
+
+.hs-tab-btn.active .hs-count {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+.sightseeing-subfilter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 36px;
+}
+
+.subfilter-btn {
+  padding: 6px 16px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #64748b;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.subfilter-btn:hover {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  background: #ffffff;
+}
+
+/* Home Destination Cards */
+.home-dest-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.home-dest-card {
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1.5px solid #e2e8f0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+}
+
+.home-dest-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--color-primary);
+  box-shadow: 0 16px 36px rgba(14, 59, 39, 0.14);
+}
+
+.home-dest-img-wrap {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  background: #0f172a;
+}
+
+.home-dest-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.home-dest-card:hover .home-dest-img-wrap img {
+  transform: scale(1.08);
+}
+
+.home-dest-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(7, 46, 102, 0.9);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.home-dest-spots-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(22, 163, 74, 0.95);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+
+.home-dest-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.home-dest-title {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 6px;
+  line-height: 1.25;
+}
+
+.home-dest-subtitle {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-gold-dark, #b8860b);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.home-dest-desc {
+  font-size: 0.86rem;
+  color: #475569;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.home-dest-spots-preview {
+  font-size: 0.78rem;
+  color: #64748b;
+  background: #f8fafc;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px dashed #cbd5e1;
+  margin-bottom: 18px;
+}
+
+.home-dest-spots-preview strong {
+  color: #1e293b;
+}
+
+.home-dest-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #0e3b27 0%, #16a34a 100%);
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(14, 59, 39, 0.18);
+}
+
+.home-dest-card:hover .home-dest-btn {
+  background: linear-gradient(135deg, #072e66 0%, #0b4fa8 100%);
+  box-shadow: 0 6px 16px rgba(7, 46, 102, 0.28);
+}
+
+
+/* Hill Station Overview Banner */
+.hillstation-banner-card {
+  background: linear-gradient(135deg, #072e66 0%, #0e3b27 60%, #16a34a 100%);
+  border-radius: 24px;
+  padding: 32px 36px;
+  color: #ffffff;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 30px rgba(14, 59, 39, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.hs-banner-info h2 {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+.hs-banner-info h2 span {
+  color: var(--color-gold, #f59e0b);
+}
+
+.hs-banner-info p {
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 650px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.hs-banner-stats {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hs-stat-pill {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 18px;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hs-stat-pill .hs-pill-num {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #facc15;
+}
+
+.hs-stat-pill .hs-pill-lbl {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Sightseeing Grid & Card Luxe */
+.sightseeing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 28px;
+}
+
+.sightseeing-card {
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.sightseeing-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(14, 59, 39, 0.12);
+  border-color: rgba(22, 163, 74, 0.3);
+}
+
+.sightseeing-img-wrap {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  background: #0f172a;
+}
+
+.sightseeing-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sightseeing-card:hover .sightseeing-img-wrap img {
+  transform: scale(1.08);
+}
+
+.sightseeing-hs-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(7, 46, 102, 0.88);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.sightseeing-tag {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(22, 163, 74, 0.92);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 100px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.sightseeing-body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.sightseeing-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.sightseeing-desc {
+  font-size: 0.88rem;
+  color: #475569;
+  line-height: 1.55;
+  margin-bottom: 16px;
+}
+
+.sightseeing-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid #f1f5f9;
+  font-size: 0.78rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.sightseeing-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Multi-Package Grid & Master Cards */
+.multi-packages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.hill-pkg-card {
+  background: #ffffff;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1.5px solid #e2e8f0;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.hill-pkg-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(14, 59, 39, 0.12);
+  border-color: var(--color-primary);
+}
+
+.hill-pkg-header {
+  position: relative;
+  height: 200px;
+}
+
+.hill-pkg-header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hill-pkg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(7, 46, 102, 0.85) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+}
+
+.hill-pkg-duration {
+  font-size: 0.75rem;
+  font-weight: 800;
+  background: var(--color-gold, #f59e0b);
+  color: #0f172a;
+  padding: 3px 10px;
+  border-radius: 20px;
+  align-self: flex-start;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.hill-pkg-title {
+  color: #ffffff;
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.hill-pkg-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.hill-pkg-route-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 14px;
+}
+
+.hill-pkg-spots-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.hill-pkg-spots-list li {
+  font-size: 0.85rem;
+  color: #475569;
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px dashed #f1f5f9;
+}
+
+.hill-pkg-spots-list li span {
+  color: var(--color-primary);
+  font-weight: 800;
+}
+
+.hill-pkg-fleet-fares {
+  background: #f8fafc;
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 20px;
+  border: 1px solid #e2e8f0;
+}
+
+.hill-fare-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.84rem;
+  padding: 4px 0;
+  color: #334155;
+}
+
+.hill-fare-row strong {
+  color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+  .hillstation-banner-card {
+    padding: 24px 20px;
+  }
+  .hs-banner-info h2 {
+    font-size: 1.5rem;
+  }
+  .hillstation-tabs-bar {
+    border-radius: 16px;
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding: 6px;
+  }
+  .hs-tab-btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+}
+
